@@ -12,3 +12,4 @@ assets:
   volumes:
     - ./src:/var/build/src
     - ./dist:/var/build/dist
+    - ./webpack.config.js:/var/build/webpack.config.js

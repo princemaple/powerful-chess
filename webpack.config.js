@@ -20,6 +20,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'scripts/[name].js'
   },
+  resolve: {
+    extensions: ['', '.ts', '.webpack.js', '.web.js', '.js']
+  },
   module: {
     loaders: [
       {
