@@ -1,0 +1,14 @@
+FROM node:4.2.1
+
+WORKDIR /var/build
+
+VOLUME /var/build/input
+VOLUME /var/build/output
+
+COPY webpack.config.js /var/build/webpack.config.js
+COPY package.json /var/build/package.json
+
+RUN npm install -g webpack
+RUN npm install
+
+CMD ["webpack", "--colors", "--progress", "-d", "--watch"]

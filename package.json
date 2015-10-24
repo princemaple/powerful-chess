@@ -1,0 +1,33 @@
+{
+  "name": "powerful-chess",
+  "version": "0.0.1",
+  "description": "Chess with power indications",
+  "main": "dist/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/princemaple/powerful-chess"
+  },
+  "keywords": [
+    "chess",
+    "education"
+  ],
+  "author": "Po Chen <chenpaul914@gmail.com> (http://pochen.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/princemaple/powerful-chess/issues"
+  },
+  "homepage": "https://princemaple.github.io/powerful-chess",
+  "devDependencies": {
+    "webpack": "latest",
+    "style-loader": "latest",
+    "css-loader": "latest",
+    "postcss-loader": "latest",
+    "postcss-import": "latest",
+    "postcss-simple-vars": "latest",
+    "postcss-nested": "latest",
+    "autoprefixer": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "typescript": "latest",
+    "ts-loader": "latest"
+  }
+}
