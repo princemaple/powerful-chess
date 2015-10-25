@@ -3,12 +3,20 @@
 import React = __React;
 
 import { Chess } from './glossary';
-import { Piece } from './piece';
+import { Board } from './board';
+import { Piece, PieceSetup } from './piece';
+
+export interface SquareSetup {
+  rank: Chess.Rank,
+  file: Chess.File,
+  piece?: Chess.Piece
+}
 
 interface Props {
-  piece: { side: Chess.Side, type: Chess.Piece },
+  piece: PieceSetup,
   rank: Chess.Rank,
-  file: Chess.File
+  file: Chess.File,
+  board: Board
 }
 
 export class Square extends React.Component<Props, any> {
@@ -27,7 +35,7 @@ export class Square extends React.Component<Props, any> {
   render() {
     return <div className={this.classList()}>
       <span>{this.notation()}</span>
-      {this.props.piece ? <Piece side={this.props.piece.side} type={this.props.piece.type}></Piece> : ''}
+      {this.props.piece ? <Piece {...this.props.piece}></Piece> : ''}
     </div>;
   }
 }

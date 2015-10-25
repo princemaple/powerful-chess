@@ -13,7 +13,7 @@ let ExtractCSS = new ExtractTextPlugin(1, 'styles/app.css');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    app: './scripts/app.tsx',
+    app: './scripts/app.ts',
     styles: './styles/app.css'
   },
   output: {
