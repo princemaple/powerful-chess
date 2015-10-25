@@ -13,7 +13,7 @@ let ExtractCSS = new ExtractTextPlugin(1, 'styles/app.css');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    app: './scripts/app.ts',
+    app: './scripts/app.tsx',
     styles: './styles/app.css'
   },
   output: {
@@ -21,12 +21,12 @@ module.exports = {
     filename: 'scripts/[name].js'
   },
   resolve: {
-    extensions: ['', '.ts', '.webpack.js', '.web.js', '.js']
+    extensions: ['', '.ts', '.tsx', '.webpack.js', '.web.js', '.js']
   },
   module: {
     loaders: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: 'ts'
       },
       {
