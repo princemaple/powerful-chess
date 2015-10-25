@@ -2,10 +2,6 @@ FROM node:4.2.1
 
 WORKDIR /var/build
 
-VOLUME /var/build/src
-VOLUME /var/build/dist
-
-RUN touch /var/build/webpack.config.js
 COPY package.json /var/build/package.json
 
 RUN npm install -g webpack
