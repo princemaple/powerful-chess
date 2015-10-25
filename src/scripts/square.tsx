@@ -3,25 +3,31 @@
 import React = __React;
 
 import { Chess } from './glossary';
-import * as Piece from './piece';
+import { Piece } from './piece';
 
-export class Square extends React.Component<{}, any> {
-  key: string;
+interface Props {
+  piece: { side: Chess.Side, type: Chess.Piece },
+  rank: Chess.Rank,
+  file: Chess.File
+}
 
-  piece: Piece.Piece;
-  color: Chess.Color;
+export class Square extends React.Component<Props, any> {
+  color() {
+    return Chess.colors[((this.props.rank % 2) + this.props.file + 1) % 2];
+  }
 
-  constructor(public rank: Chess.Rank, public file: Chess.File ) {
-    super();
-    this.color = Chess.colors[((this.rank % 2) + this.file + 1) % 2];
-    this.key = Chess.File[this.file] + (this.rank + 1).toString();
+  notation() {
+    return Chess.File[this.props.file] + (this.props.rank + 1).toString();
+  }
+
+  classList() {
+    return ['square', Chess.Color[this.color()].toLowerCase()].join(' ');
   }
 
   render() {
-    let classList = ['square', Chess.Color[this.color].toLowerCase()].join(' ');
-    return <div className={classList}>
-      <span>{this.key}</span>
-      { this.piece ? this.piece.toString() : '' }
+    return <div className={this.classList()}>
+      <span>{this.notation()}</span>
+      {this.props.piece ? <Piece side={this.props.piece.side} type={this.props.piece.type}></Piece> : ''}
     </div>;
   }
 }

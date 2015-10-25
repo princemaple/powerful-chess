@@ -1,5 +1,6 @@
 /// <reference path="../../typings/tsd.d.ts"/>
 
+import React = __React;
 import ReactDOM = __ReactDom;
 
 import { Chess } from './glossary';
@@ -17,15 +18,11 @@ class UI {
   render() {
     let mountpoint = document.querySelector('#mountpoint');
 
-    ReactDOM.render(this.board.render(), mountpoint);
+    ReactDOM.render(<Board></Board>, mountpoint);
   }
 }
 
 let game = new Game();
 let ui = new UI(game.board);
-
-console.log(game);
-console.log(game.board);
-console.log(ui);
 
 ui.render();

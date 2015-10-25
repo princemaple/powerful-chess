@@ -3,6 +3,7 @@ export namespace Chess {
   export enum Color { Dark, Light };
   export enum File { A, B, C, D, E, F, G, H };
   export enum Rank { One, Two, Three, Four, Five, Six, Seven, Eight };
+  export enum Piece { Pawn, Knight, Bishop, Rook, Queen, King };
 
   export let colors = [Color.Light, Color.Dark];
   export let files = [File.A, File.B, File.C, File.D, File.E, File.F, File.G, File.H];
