@@ -12,4 +12,6 @@ assets:
   volumes:
     - ./src:/var/build/src
     - ./dist:/var/build/dist
+    - ./typings:/var/build/typings
     - ./webpack.config.js:/var/build/webpack.config.js
+    - ./tsconfig.json:/var/build/tsconfig.json
