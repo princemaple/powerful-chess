@@ -1,0 +1,19 @@
+#board {
+  display: flex;
+  flex-flow: row wrap;
+  width: 640px;
+  height: 640px;
+  border: 2px solid black;
+}
+
+.square {
+  width: 80px;
+
+  &.dark {
+    background-color: #907E56;
+  }
+
+  &.light {
+    background-color: #E0BD71;
+  }
+}
