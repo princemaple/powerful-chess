@@ -69,7 +69,7 @@ export class Board extends React.Component<Props, any> {
     {
       this.state.squares.map(
         row => row.map(
-          square => <Square {...square} board={this}></Square>))
+          square => <Square {...square} board={this} />))
     }
     </div>;
   }

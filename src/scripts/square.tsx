@@ -35,7 +35,7 @@ export class Square extends React.Component<Props, any> {
   render() {
     return <div className={this.classList()}>
       <span>{this.notation()}</span>
-      {this.props.piece ? <Piece {...this.props.piece}></Piece> : ''}
+      {this.props.piece ? <Piece {...this.props.piece} /> : ''}
     </div>;
   }
 }

@@ -13,6 +13,6 @@ export class UI {
   render() {
     let mountpoint = document.querySelector('#mountpoint');
 
-    ReactDOM.render(<Board setup={this.game.boardSetup}></Board>, mountpoint);
+    ReactDOM.render(<Board setup={this.game.boardSetup} />, mountpoint);
   }
 }
