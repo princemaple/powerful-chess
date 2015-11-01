@@ -3,20 +3,22 @@
 import React = __React;
 
 import { Chess } from './glossary';
+import { Game } from './game';
 import { Board } from './board';
 import { Piece, PieceSetup } from './piece';
+
+interface Props {
+  rank: Chess.Rank,
+  file: Chess.File,
+  piece: PieceSetup,
+  board: Board,
+  game: Game
+}
 
 export interface SquareSetup {
   rank: Chess.Rank,
   file: Chess.File,
-  piece?: Chess.Piece
-}
-
-interface Props {
-  piece: PieceSetup,
-  rank: Chess.Rank,
-  file: Chess.File,
-  board: Board
+  piece?: PieceSetup,
 }
 
 export class Square extends React.Component<Props, any> {
@@ -32,10 +34,21 @@ export class Square extends React.Component<Props, any> {
     return ['square', Chess.Color[this.color()].toLowerCase()].join(' ');
   }
 
+  handleClick(event) {
+    console.log('Square clicked', event);
+    this.props.game.onSquareClick(this);
+  }
+
   render() {
-    return <div className={this.classList()}>
+    let piece: any = '';
+
+    if (this.props.piece) {
+      piece = <Piece {...this.props.piece} square={this} game={this.props.game} />
+    }
+
+    return <div className={this.classList()} onClick={this.handleClick.bind(this)}>
       <span>{this.notation()}</span>
-      {this.props.piece ? <Piece {...this.props.piece} /> : ''}
+      {piece}
     </div>;
   }
 }

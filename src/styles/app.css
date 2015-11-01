@@ -1,4 +1,4 @@
-#mountpoint {
+#container {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -12,6 +12,10 @@
   border: 2px solid black;
 }
 
+#status {
+  padding: 20px;
+}
+
 .square {
   width: 80px;
 
@@ -22,4 +26,14 @@
   &.light {
     background-color: #E0BD71;
   }
+}
+
+.black {
+  color: red;
+  background-color: #000;
+}
+
+.white {
+  color: red;
+  background-color: #fff;
 }

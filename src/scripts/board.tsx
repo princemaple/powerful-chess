@@ -3,22 +3,27 @@
 import React = __React;
 
 import { Chess } from './glossary';
+import { Game } from './game';
 import { Square, SquareSetup } from './square';
 import { PieceSetup } from './piece';
 
 interface Props {
-  setup: Array<PieceSetup>
+  game: Game
 }
 
-export class Board extends React.Component<Props, any> {
-  squares: Array<Array<SquareSetup>>;
-  pieces: Array<PieceSetup>;
+type BoardSetup = PieceSetup[];
 
-  constructor(props) {
+export class Board extends React.Component<Props, any> {
+  squares: SquareSetup[][];
+  pieces: PieceSetup[];
+
+  constructor(props:Props) {
     super(props);
 
+    props.game.board = this;
+
     this.initSquares();
-    this.initPieces(props.setup);
+    this.initPieces(props.game.boardSetup);
     this.updatePower();
 
     this.state = { squares: this.squares, pieces: this.pieces };
@@ -28,26 +33,22 @@ export class Board extends React.Component<Props, any> {
     this.squares = [];
 
     for (let i = 0; i < 8; ++i) {
-      let row = [];
+      let row: SquareSetup[] = [];
 
       for (let j = 0; j < 8; ++j) {
-        row.push({
-            rank: Chess.ranks[i],
-            file: Chess.files[j]
-        });
+        row.push({ rank: Chess.ranks[i], file: Chess.files[j] });
       }
 
       this.squares.push(row);
     }
   }
 
-  initPieces(setup) {
+  initPieces(setup: BoardSetup) {
     this.pieces = [];
 
     for (let piece of setup) {
       let square = this.squares[piece.row][piece.col];
       square.piece = piece;
-      piece.square = square;
       this.pieces.push(piece);
     }
   }
@@ -60,16 +61,18 @@ export class Board extends React.Component<Props, any> {
     this.setState(this.state);
   }
 
-  handleClick() {
-    console.log(this);
+  handleClick(event) {
+    console.log('Board clicked', event);
   }
 
   render() {
+    let game = this.props.game;
+
     return <div id="board" onClick={this.handleClick.bind(this)}>
     {
       this.state.squares.map(
         row => row.map(
-          square => <Square {...square} board={this} />))
+          square => <Square {...square} board={this} game={game} />))
     }
     </div>;
   }
