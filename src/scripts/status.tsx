@@ -18,7 +18,7 @@ export class Status extends React.Component<Props, any> {
   }
 
   playerToMove() {
-    return Chess.Side[this.props.game.currentRound];
+    return Chess.Side[this.props.game.currentPly];
   }
 
   update() {
